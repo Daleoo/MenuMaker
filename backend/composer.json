@@ -1,0 +1,22 @@
+{
+    "name": "lewisdale/menumaker",
+    "description": "A Menu Generation package",
+    "require": {
+        "silex/silex": "^2.0@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lewis Dale",
+            "email": "lewis@lewisdale.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "Application",
+            "App\\Controller": "Application/Controller",
+            "App\\Model": "Application/Model"
+        }
+    },
+    "minimum-stability": "dev"
+}
