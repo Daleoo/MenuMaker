@@ -98,7 +98,9 @@ abstract class Model
                     ->filter($this->_primaryKey, $id)
                     ->limit(1)
                     ->getFirstItem();
-        $this->setData($item->getData());
+        if($item && $item->getId()) {
+            return $item;
+        }
 
         return $this;
     }

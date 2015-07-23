@@ -1,3 +1,5 @@
 /backend/vendor/
 
 backend/composer.lock
+/backend/Application/Model/cache/
+/backend/Application/Model/cache/Item

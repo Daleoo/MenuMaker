@@ -22,6 +22,9 @@ class Install extends Installer
              ->addColumn('menu','INT',0,array(
                 'NOT NULL',
              ))
+             ->addColumn('parent','INT',0,array(
+                 'DEFAULT 0'
+             ))
              ->save();
     }
 }
