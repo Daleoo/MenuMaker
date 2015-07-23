@@ -14,8 +14,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "Application",
-            "App\\Controller": "Application/Controller",
-            "App\\Model": "Application/Model"
+            "App\\Controller\\": "Application/Controller",
+            "App\\Model\\": "Application/Model"
         }
     },
     "minimum-stability": "dev"
