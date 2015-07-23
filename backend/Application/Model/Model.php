@@ -114,6 +114,7 @@ abstract class Model
             $this->insert();
         } else {
             //Update
+            $this->update();
         }
 
         return $this;
@@ -168,19 +169,27 @@ abstract class Model
         $this->_columns = json_decode(file_get_contents($file));
     }
 
-    public function delete(array $fields) {
+    public function delete() {
+        if($this->getId()) {
+            //Delete from database
+            $id = App::db()->escape($this->getId());
+            $query = "DELETE FROM {$this->_table} WHERE {$this->_primaryKey} = '{$id}'";
+            App::db()->query($query);
 
+            //Clear object data
+            $this->setData([]);
+        }
+
+        return $this;
     }
 
-    public function insert() {
+    protected function insert() {
         $data = [];
         $db = App::db();
 
         foreach($this->_columns as $column) {
             if($this->get($column)) {
-
                 $data[$db->escape($column)] = "'".$this->get($db->escape($column))."'";
-
             }
         }
 
@@ -189,13 +198,30 @@ abstract class Model
         $query = "INSERT INTO {$this->_table} ({$fields}) VALUES ({$values})";
 
         $db->query($query);
+
+        return $this;
     }
 
-    public function update() {
+    protected function update() {
+        $data = [];
+        $db = App::db();
 
-    }
-    public function query($string) {
+        foreach($this->_columns as $column) {
+            if($this->get($column)) {
+                $data[$db->escape($column)] = "'".$this->get($db->escape($column))."'";
+            }
+        }
 
+        unset($data[$this->_primaryKey]);
+        $fields = implode(',',array_keys($data));
+        $values = implode(',',array_values($data));
+        $primaryKey = $db->escape($this->getId());
+
+        $query = "UPDATE {$this->_table} ({$fields}) VALUES ({$values}) WHERE {$this->_primaryKey} = '{$primaryKey}'";
+
+        $db->query($query);
+
+        return $this;
     }
 
     //TODO: Select, Delete, Insert functions
