@@ -66,9 +66,10 @@ class Collection implements \Iterator, \Countable {
         if(count($this->filters)) {
             $query .= " WHERE";
 
-            foreach($this->filters as $filter) {
-                $query .= " ".$filter;
+            if(count($this->filters)) {
+                $query .= " " . implode(" AND ", $this->filters);
             }
+
         }
 
         if($this->limit) {

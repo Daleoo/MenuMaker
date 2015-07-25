@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "trajan";
+    src: url('../fonts/TrajanPro-Regular.otf');
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url('../fonts/Raleway-Light.ttf');
+}
+
+* {
+    color: #695e5e;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway";
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: "trajan";
+    font-weight: normal;
+    margin: 0px;
+    text-align: center;
+    line-height: 35px;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: "trajan";
+    font-weight: normal;
+    margin: 0px;
+}
+
+h3 {
+    font-size: 15px;
+    font-family: "trajan";
+    font-weight: normal;
+    margin: 0px;
+}
+
+h4 {
+    font-size: 15px;
+    font-family: "trajan";
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+.clearer {
+    clear: both;
+}
+.page {
+
+}
+
+.logo img {
+    max-width: 100%;
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.heading {
+    margin: 20px 0 0;
+    text-align: center;
+}
+
+.heading h1 {
+    border-bottom: 3px solid rgba(105,94,94,0.45);
+    display: inline-block;
+}
+
+.heading .subheading {
+    display: block;
+    margin-top: 10px;
+}
+
+.menu {
+    margin-top: 30px;
+}
+.menuitem {
+    clear: both;
+    margin-top: 15px;
+}
+.menuitem .left {
+    width: 70%;
+    float: left;
+    clear: both;
+    margin-bottom: 8px;
+}
+
+.menuitem .right {
+    width: 25%;
+    float: right;
+    text-align: right;
+}
+
+.menuitem .description {
+    margin: 0;
+}
+.menuitem .extra {
+    margin: 5px 0;
+}
+
+.footer {
+    margin-top: 50px;
+}
+
+.jacket {
+    margin-top: 35px;
+}

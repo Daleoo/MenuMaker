@@ -9,6 +9,11 @@ class App extends Application {
         parent::__construct();
         App::init();
         $this['debug'] = true;
+
+        $this->register(new \Silex\Provider\TwigServiceProvider(), array(
+            'twig.path' => __DIR__.DS.'..'.DS.'templates',
+            'twig.class_path' => __DIR__.DS.'..'.DS.'vendor'.DS.'twig'.DS.'lib',
+        ));
     }
 
     /**
@@ -25,7 +30,7 @@ class App extends Application {
         );
     }
     /**
-     * Define routing
+     * Define routes
      */
     public function route() {
 
@@ -51,6 +56,12 @@ class App extends Application {
         $this->get('menu/view/{id}', function($id) {
 
         });
+
+        $this->get('menu/generate/{id}',function($id) {
+            $controller = App::controller('menu');
+            return $controller->generateMenu($id);
+
+        });
     }
 
     /**
@@ -65,7 +76,8 @@ class App extends Application {
      * Load controller using psr-4 path
      */
     public static function controller($path) {
-
+        $namespace = "\\App\\Controller\\".$path;
+        return new $namespace();
     }
 
     /**
@@ -87,6 +99,14 @@ class App extends Application {
         } else {
             return $decodedConfig;
         }
+    }
+
+    /**
+     * Get the Twig templating engine
+     */
+    public static function getTemplater() {
+        $app = new App();
+        return $app['twig'];
     }
 }
 

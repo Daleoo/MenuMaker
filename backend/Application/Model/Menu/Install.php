@@ -16,6 +16,7 @@ class Install extends Installer
                  'NOT NULL'
              ))
              ->addColumn('subheading','VARCHAR',2500,array())
+             ->addColumn('starts','TIME',0,array())
              ->save();
     }
 }

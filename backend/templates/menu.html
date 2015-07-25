@@ -1,0 +1,52 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Lunch Menu</title>
+        <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/menu.css" />
+    </head>
+    <body>
+        <div class="page">
+            <div class="logo">
+                <img src="http://localhost:8080/images/logo.png" />
+            </div>
+            <div class="content">
+                <div class="heading">
+                    <h1>{{ title }}</h1>
+                    <span class="subheading">{{ subheading }}</span>
+                    <span class="subheading">To order call 0161 747 0081 or go online to www.onetwentytwo.co.uk</span>
+                </div>
+                <div class="menu">
+                    {% for item in items %}
+                        <div class="menuitem">
+                            <div class="left">
+                                <h2>{{ item.title }}</h2>
+                                <p class="description">
+                                    {{ item.description }}
+                                </p>
+                            </div>
+                            <div class="right">
+                                <h3>&pound;{{ item.price|number_format(2,'.') }}</h3>
+                            </div>
+                            {% if item.children %}
+                                <div class="left">
+                                    {% for child in item.children %}
+                                        <p class="extra">{{ child.title }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="right">
+                                    {% for child in item.children %}
+                                        <h4>&pound;{{ child.price|number_format(2,'.') }}</h4>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="clearer"></div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="footer">
+                    All of the above served after {{ time }} daily. Some of our products may contain nuts or other allergens. Ask a member of staff for details if you need further information.
+ Please ask if you have any special requirements, and we will always do our best to accommodate your requests.
+                </div>
+            </div>
+    </body>
+</html>

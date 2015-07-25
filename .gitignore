@@ -3,3 +3,6 @@
 backend/composer.lock
 /backend/Application/Model/cache/
 /backend/Application/Model/cache/Item
+/frontend/node_modules/
+public/fonts/Raleway-Light.ttf
+public/fonts/TrajanPro-Regular.otf

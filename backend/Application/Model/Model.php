@@ -19,7 +19,7 @@ abstract class Model
     public function __construct() {
 
         if(!$this->tableExists()) {
-            //Do some magic to get the SQL and generate the table
+            //If the table does not exist, run the Model's installer
             $class = "\\".get_class($this);
             $class .= "\\Install";
 
@@ -27,6 +27,7 @@ abstract class Model
             $installer->install();
         }
 
+        //Load the columns from the cache
         $this->columnCache();
 
     }
@@ -122,11 +123,17 @@ abstract class Model
         return $this;
     }
 
+    /**
+     * Get the models collection instance
+     */
     public function getCollection() {
         $collection = new \App\Model\Collection();
         return $collection->init($this->_table,get_class($this));
     }
 
+    /**
+     * Perform select on the model
+     */
     public function select(array $fields) {
         $collection = $this->getCollection();
         foreach($fields as $field => $value) {
@@ -136,6 +143,9 @@ abstract class Model
         return $collection->limit(1)->execute()[0];
     }
 
+    /**
+     * Checks if the table exists by attempting to perform a select on it
+     */
     protected function tableExists() {
 
         try {
@@ -147,6 +157,10 @@ abstract class Model
         return true;
     }
 
+    /**
+     * Loads the table columns from the cache
+     * Recaches if the cache does not exist or is invalid
+     */
     protected function columnCache() {
         $file = str_replace('App\\Model\\','',get_class($this));
         $file = str_replace('\\','_',$file);
@@ -171,6 +185,9 @@ abstract class Model
         $this->_columns = json_decode(file_get_contents($file));
     }
 
+    /**
+     * Delete the current model from the database
+     */
     public function delete() {
         if($this->getId()) {
             //Delete from database
@@ -185,6 +202,9 @@ abstract class Model
         return $this;
     }
 
+    /**
+     * Insert the current model as a new row in the database
+     */
     protected function insert() {
         $data = [];
         $db = App::db();
@@ -204,6 +224,9 @@ abstract class Model
         return $this;
     }
 
+    /**
+     * Updates the current model in the database
+     */
     protected function update() {
         $data = [];
         $db = App::db();
@@ -225,7 +248,4 @@ abstract class Model
 
         return $this;
     }
-
-    //TODO: Select, Delete, Insert functions
-    //TODO: Generic query function
 }

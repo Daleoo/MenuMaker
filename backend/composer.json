@@ -2,7 +2,9 @@
     "name": "lewisdale/menumaker",
     "description": "A Menu Generation package",
     "require": {
-        "silex/silex": "^2.0@dev"
+        "silex/silex": "^2.0@dev",
+        "twig/twig": "^2.0@dev",
+        "mikehaertl/phpwkhtmltopdf": "^2.0@dev"
     },
     "license": "MIT",
     "authors": [
