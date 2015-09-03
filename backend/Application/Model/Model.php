@@ -9,6 +9,7 @@
 namespace App\Model;
 
 use App\App;
+use App\LogFactory as Log;
 abstract class Model
 {
     protected $_table;
@@ -99,7 +100,9 @@ abstract class Model
                     ->filter($this->_primaryKey, $id)
                     ->limit(1)
                     ->getFirstItem();
+
         if($item && $item->getId()) {
+
             return $item;
         }
 
@@ -210,6 +213,7 @@ abstract class Model
         $db = App::db();
 
         foreach($this->_columns as $column) {
+
             if($this->get($column)) {
                 $data[$db->escape($column)] = "'".$this->get($db->escape($column))."'";
             }
@@ -232,19 +236,17 @@ abstract class Model
         $db = App::db();
 
         foreach($this->_columns as $column) {
-            if($this->get($column)) {
-                $data[$db->escape($column)] = "'".$this->get($db->escape($column))."'";
+            if($this->get($column) !== false && $column != $this->_primaryKey) {
+                Log::debug($column . " " . $this->get($column));
+                $data[] = $db->escape($column). " = '".$db->escape($this->get($column))."'";
             }
         }
 
-        unset($data[$this->_primaryKey]);
-        $fields = implode(',',array_keys($data));
-        $values = implode(',',array_values($data));
+        $update = implode(',',$data);
         $primaryKey = $db->escape($this->getId());
 
-        $query = "UPDATE {$this->_table} ({$fields}) VALUES ({$values}) WHERE {$this->_primaryKey} = '{$primaryKey}'";
-
-        $db->query($query);
+        $query = "UPDATE {$this->_table} SET {$update} WHERE {$this->_primaryKey} = '{$primaryKey}'";
+        App::db()->query($query);
 
         return $this;
     }

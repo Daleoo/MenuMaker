@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html>
     <head>
-        <title>Lunch Menu</title>
+        <title>{{ title }}</title>
         <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/menu.css" />
     </head>
     <body>
@@ -17,6 +17,11 @@
                 </div>
                 <div class="menu">
                     {% for item in items %}
+                        {% if pricing == "eatin" %}
+                            {% set price = item.eatinprice|number_format(2,'.') %}
+                        {% else %}
+                            {% set price = item.takeoutprice|number_format(2,'.') %}
+                        {% endif %}
                         <div class="menuitem">
                             <div class="left">
                                 <h2>{{ item.title }}</h2>
@@ -25,17 +30,31 @@
                                 </p>
                             </div>
                             <div class="right">
-                                <h3>&pound;{{ item.price|number_format(2,'.') }}</h3>
+
+                                <h3>
+                                    {% if price > 0.00 %}
+                                        &pound;{{ price }}
+                                    {% endif %}
+                                </h3>
                             </div>
                             {% if item.children %}
                                 <div class="left">
                                     {% for child in item.children %}
-                                        <p class="extra">{{ child.title }}</p>
+                                            <p class="extra">{{ child.title }}</p>
                                     {% endfor %}
                                 </div>
                                 <div class="right">
                                     {% for child in item.children %}
-                                        <h4>&pound;{{ child.price|number_format(2,'.') }}</h4>
+                                        {% if pricing == "eatin" %}
+                                            {% set childprice = child.eatinprice|number_format(2,'.') %}
+                                        {% else %}
+                                            {% set childprice = child.takeoutprice|number_format(2,'.') %}
+                                        {% endif %}
+                                        <h4>
+                                            {% if childprice > 0.00 %}
+                                                &pound;{{ childprice }}
+                                            {% endif %}
+                                        </h4>
                                     {% endfor %}
                                 </div>
                             {% endif %}

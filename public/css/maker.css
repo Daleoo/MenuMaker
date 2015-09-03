@@ -1,0 +1,111 @@
+html,body {
+    width:100%;
+    margin: 0;
+}
+
+body {
+    background: #ebebeb;
+    color: #646464;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url('../fonts/Raleway-Light.ttf');
+}
+
+h1 {
+    font-family: "Raleway", arial;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    font-family: "Raleway", arial;
+}
+
+button {
+    background: #fff;
+    border: 1px solid #646464;
+    padding:5px 10px;
+    border-radius: 3px;
+    font-family: "Raleway";
+}
+
+#content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.menuMaker {
+    width: 66%;
+    margin: 0 auto;
+}
+
+.menu {
+    cursor: pointer;
+}
+
+.menuitem, .newitem {
+    cursor: default;
+    clear: both;
+    font-family: "Raleway";
+    min-height: 30px;
+    vertical-align: middle;
+}
+
+.menuitem button {
+    float: right;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.menuactions {
+    margin-bottom: 15px;
+}
+
+.menuactions .actionlist {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    background: #CECECE;
+}
+
+.menuactions .actionlist button {
+    margin: 0px 2px;
+}
+
+.itemform {
+    width: 100%;
+    margin: 15px 0;
+    background: #CECECE;
+    padding: 15px;
+}
+
+.itemform input, .itemform textarea, .itemform select {
+    width: 50%;
+    background: #fff;
+    border: 1px solid #636363;
+    padding: 0px 2px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: block;
+}
+
+.itemform input {
+    height: 20px;
+}
+
+.itemform select {
+    height: 25px;
+}
+.itemform button {
+    float: none;
+}
+
+.menuedit {
+    display: inline-block;
+    width: auto;
+}
+.menuedit.enabled {
+    display: block;
+}

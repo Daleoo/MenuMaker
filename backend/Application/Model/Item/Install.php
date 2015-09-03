@@ -15,15 +15,22 @@ class Install extends Installer
              ->addColumn('title','VARCHAR',255,array(
                  'NOT NULL'
              ))
-             ->addColumn('price','FLOAT',0,array(
+             ->addColumn('eatinprice','FLOAT',0,array(
                  'NOT NULL'
              ))
+             ->addColumn('takeoutprice','FLOAT',0,array())
              ->addColumn('description','VARCHAR',2500,array())
              ->addColumn('menu','INT',0,array(
                 'NOT NULL',
              ))
              ->addColumn('parent','INT',0,array(
                  'DEFAULT 0'
+             ))
+             ->addColumn('takeout','INT',1,array(
+                 'DEFAULT 0'
+             ))
+             ->addColumn('eatin','INT',1,array(
+                 'DEFAULT 0',
              ))
              ->save();
     }

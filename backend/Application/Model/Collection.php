@@ -19,7 +19,8 @@ class Collection implements \Iterator, \Countable {
         'gt' => '>',
         'gteq' => '>=',
         'not' => 'IS NOT',
-        'is' => 'IS'
+        'is' => 'IS',
+        'like' => 'LIKE'
     ];
 
     private $filters = [];
@@ -43,7 +44,7 @@ class Collection implements \Iterator, \Countable {
         if(!array_key_exists($check,$this->checks)) {
             throw new \Exception("Check {$check} not recognised");
         }
-        $this->filters[] = App::db()->escape($field)." ".$this->checks[$check]." ".App::db()->escape($value);
+        $this->filters[] = App::db()->escape($field)." ".$this->checks[$check]." '".App::db()->escape($value)."'";
 
         return $this;
     }
@@ -67,6 +68,7 @@ class Collection implements \Iterator, \Countable {
             $query .= " WHERE";
 
             if(count($this->filters)) {
+
                 $query .= " " . implode(" AND ", $this->filters);
             }
 

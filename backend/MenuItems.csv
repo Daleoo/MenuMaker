@@ -1,0 +1,91 @@
+title,description,eatinprice,takeoutprice,menu,parent,takeout,eatin
+Bacon,Succulent and tasty bacon on either a soft white or brown floured bap,2.5,2.2,Breakfast,0,1,1
+Add an egg,,2.7,2.4,Breakfast,Bacon,1,1
+Add a sausage,,2.95,2.65,Breakfast,Bacon,1,1
+Add both,,3.15,2.85,Breakfast,Bacon,1,1
+Sausage,High quality full-flavoured pork sausages on either a soft white or brown floured bap,2.6,2.3,Breakfast,0,1,1
+Add an egg,,2.85,2.5,Breakfast,Sausage,1,1
+Breakfast Wrap,"Bacon, sausage, egg, hash brown and a sprinkling of our mature cheddar cheese all wrapped up in a soft flour tortilla",2.95,2.75,Breakfast,0,1,1
+Traditional English Breakfast,"As you would expect, a full English breakfast including 2 rashers of bacon, 2 sausages, an egg, hash brown, baked beans, mushrooms, grilled tomato and a black pudding. Includes two rounds of toast and a tea or coffee.",4.95,3.95,Breakfast,0,1,1
+Additional Item,,0.5,0.5,Breakfast,Traditional English Breakfast,1,1
+Toasted Bagel,"Choose from our range of bagels, from plain to wholegrain, toasted with lashings of butter",1.45,1.15,Breakfast,0,1,1
+With scrambled egg,,2.25,1.95,Breakfast,Toasted Bagel,1,1
+Crumpets,Two toasted crumpets with plenty of butter,1.25,0.95,Breakfast,0,1,1
+Omelette,A light and fluffy omelette with our mature cheddar cheese,0,0,Breakfast,0,0,1
+"Plain, with a side salad",,2.45,0,Breakfast,Omelette,0,1
+Additional Items,,0.4,0.4,Breakfast,Omelette,0,1
+Croissant,"A warm, freshly baked croissant - fill with jam or butter for a delicious breakfast",1.25,0.95,Breakfast,0,1,1
+Additional Items,,0.3,0.3,Breakfast,0,1,1
+Bacon,,,,Breakfast,Additional Items,1,1
+Sausage,,,,Breakfast,Additional Items,1,1
+Hash Browns,,,,Breakfast,Additional Items,1,1
+Mushrooms,,,,Breakfast,Additional Items,1,1
+Black Pudding,,,,Breakfast,Additional Items,1,1
+Crumpets & Tuna Melt with Salad,"Two toasted crumpets wuth tuna, mayo and mozzarella topping - a very tasty lunch!",3.25,0,Lunch,0,0,1
+Caesar Salad,"Fresh traditional green salad with homemade salt and pepper croutons, served with our caesar dressing.",2.95,0,Lunch,0,0,1
+With grilled & seasoned 100% chicken breast,,4.95,0,Lunch,Caesar Salad,0,1
+Homemade Quiche with a Green Salad,"A delicious homemade quiche, with a green salad and a side of crusty bread",3.75,0,Lunch,0,0,1
+Add a jacket potato,,1.5,0,Lunch,Homemade Quiche with a Green Salad,0,1
+Cheese Ploughmans Lunch,"A chunk of cheese, salad, a rustic cob with onion relish and coleslaw",4.95,0,Lunch,0,0,1
+Add Hand-Carved Ham,,0.75,0,Lunch,Cheese Ploughmans Lunch,0,1
+Jacket Potato,,,,Lunch,0,1,1
+Plain with a generous dollop of butter,,2.15,1.65,Lunch,Jacket Potato,1,1
+Heinz Baked Beans,,2.25,1.95,Lunch,Jacket Potato,1,1
+Mature Cheddar Cheese,,2.65,2.15,Lunch,Jacket Potato,1,1
+Homemade Chilli,,3.45,2.95,Lunch,Jacket Potato,1,1
+"Tuna, Mayo and Sweetcorn",,2.95,2.45,Lunch,Jacket Potato,1,1
+Mature Cheddar Cheese and Bacon,,3.45,2.95,Lunch,Jacket Potato,1,1
+Sandwiches/Wraps/Ciabatta,,,,Lunch,0,1,1
+Egg Mayo,,2.45,1.95,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Beef,,2.95,2.45,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Ham,,2.95,2.3,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Chicken,,2.95,2.3,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Tuna,,2.15,1.85,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Prawn,,3.25,2.75,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+BLT,,3.45,2.75,Lunch,Sandwiches/Wraps/Ciabatta,1,1
+Club Sandwich,"A triple-decker sandwich with bacon, chicken, lettuce and tomato with mayonnaise",4.75,3.75,Lunch,0,1,1
+Toasted Sandwiches,,,,Lunch,0,1,1
+Cheese with onion and tomato or mushroom,,2.95,2.35,Lunch,Toasted Sandwiches,1,1
+"Additional Toppings - Tuna, ham, pastrami or bacon",,0.75,0.5,Lunch,Toasted Sandwiches,1,1
+,, , ,Lunch,Toasted Sandwiches,1,1
+, ,  , ,Lunch,Toasted Sandwiches,1,1
+Paninis,Delicious paninis made fresh to order with a choice of fillings,4.75,3.75,Lunch,0,1,1
+Ham & Cheese,,,,Lunch,Paninis,1,1
+"Mozzarella, pesto, onion & tomato",,,,Lunch,Paninis,1,1
+Create Your Own,,,,Lunch,Paninis,1,1
+Rustic Fries,Delicious rustic fries - perfect as a side or a light snack!,1.25,1.25,Lunch,0,1,1
+Pot of Tea (for one),,1.3,1,Drinks,0,1,1
+Latte,,2.3,2,Drinks,0,1,1
+Americano,,2.1,1.8,Drinks,0,1,1
+Mocha,,2.5,2.5,Drinks,0,1,1
+Cappucino, ,2.3,2,Drinks,0,1,1
+Flavoured Shots,,0.5,0.5,Drinks,0,1,1
+Hot Chocolate,,2,1.8,Drinks,0,1,1
+Cream,,0.35,0.35,Drinks,Hot Chocolate,1,1
+Marshmellows,,0.35,0.35,Drinks,Hot Chocolate,1,1
+Coca Cola,,1.5,0,Drinks,0,1,0
+Curiosity Cola,,1.9,1.6,Drinks,0,1,1
+Ginger Beer,,1.9,1.6,Drinks,0,1,1
+Victorian Lemonade,,1.9,1.6,Drinks,0,1,1
+Still/Sparkling Water,,1.5,1,Drinks,0,1,1
+Orange/Apple Juice,,1.2,1.2,Drinks,0,0,1
+Cordial,,0.7,0,Drinks,0,0,1
+Cans,,0.95,0.7,Drinks,0,1,1
+Egg Mayo,,2.45,1.95,Sandwiches,0,1,1
+Beef,,2.95,2.45,Sandwiches,0,1,1
+Tuna,,2.15,1.85,Sandwiches,0,1,1
+Prawn,,3.25,2.75,Sandwiches,0,1,1
+BLT,,3.45,2.75,Sandwiches,0,1,1
+Panini,,4.75,3.75,Sandwiches,0,1,1
+Panini,,4.75,3.75,Sandwiches,0,1,1
+Sandwich with a choice of fillings,"A choice of fillings, chopped apple & crisps, followed by jelly or ice cream. Includes a glass of cordial/juice or milk.",3.45,0,Childrens Menu,0,0,1
+Hot chicken wrap,Freshly cooked seasoned chicken breast on a flour tortilla,2.25,0,Childrens Menu,0,0,1
+Jacket Potato,,,,Childrens Menu,0,0,1
+Plain with a generous dollop of butter,,1.15,0.9,Childrens Menu,Jacket Potato,1,1
+Heinz Baked Beans,,1.2,1.05,Childrens Menu,Jacket Potato,1,1
+Mature Cheddar Cheese,,1.4,1.15,Childrens Menu,Jacket Potato,1,1
+Homemade Chilli,,1.8,1.55,Childrens Menu,Jacket Potato,1,1
+"Tuna, Mayo and Sweetcorn",,1.55,1.3,Childrens Menu,Jacket Potato,1,1
+Mature Cheddar Cheese and Bacon,,1.8,1.55,Childrens Menu,Jacket Potato,1,1
+Rustic Fries,,1.25,1.25,Childrens Menu,0,1,1
+Cheese or beans on toast,,1.5,1.5,Childrens Menu,0,1,1

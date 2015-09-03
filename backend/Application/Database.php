@@ -7,7 +7,7 @@
  */
 
 namespace App;
-
+use App\LogFactory as Log;
 class Database {
     private $db_host;
     private $db_name;
@@ -26,9 +26,11 @@ class Database {
     }
 
     public function query( $query ) {
+        Log::debug($query);
         $this->result = $this->db->query( $query );
 
-        if(!$this->result) {
+        if(!$this->result || $this->db->errno) {
+            die($this->db->error);
             throw new \Exception($this->db->error);
         }
     }

@@ -1,6 +1,9 @@
 <?php
 namespace App;
 use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\LogFactory as Logger;
 
 class App extends Application {
     private static $_db;
@@ -37,9 +40,14 @@ class App extends Application {
         //List menu items
         $this->get('item/list', function() {
             $collection = App::model('item')->getCollection()->toJson();
+            Logger::debug("Test Log");
             return $collection;
         });
 
+        $this->get('item/list/{parent}', function($parent) {
+            $collection = App::model('item')->getCollection()->filter('parent',$parent)->toJson();
+            return $collection;
+        });
         //Get specific menu item
         $this->get('item/view/{id}', function($id) {
             $model = App::model('item');
@@ -54,13 +62,48 @@ class App extends Application {
         });
 
         $this->get('menu/view/{id}', function($id) {
+            $collection = App::model('item')->getCollection()->filter('menu',$id)->toJson();
+            return $collection;
+        });
+
+        $this->get('menu/generate/takeout/{id}',function($id) {
+            $controller = App::controller('menu');
+            return $controller->generateTakeOutMenu($id);
 
         });
 
-        $this->get('menu/generate/{id}',function($id) {
+        $this->get('menu/generate/eatin/{id}',function($id) {
             $controller = App::controller('menu');
-            return $controller->generateMenu($id);
+            return $controller->generateEatInMenu($id);
 
+        });
+        $this->put('item/update',function(Request $request) {
+            $model = App::model('item');
+            $data = (array) json_decode($request->getContent(),true);
+            $model->setData($data);
+            $model->save();
+            return json_encode($model->getData());
+        });
+
+        $this->delete('item/delete',function(Request $request) {
+            $model = App::model('item');
+            $data = json_decode($request->getContent(),true);
+            $model = App::model('item')->load($data['item']);
+
+            if($model->getId()) {
+                $model->delete();
+            }
+
+            return true;
+        });
+
+        $this->put('item/create',function(Request $request) {
+            $model = App::model('item');
+            $data = (array) json_decode($request->getContent(),true);
+            $model->setData($data)
+                ->save();
+
+            return true;
         });
     }
 
