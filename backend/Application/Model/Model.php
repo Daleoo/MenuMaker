@@ -167,7 +167,7 @@ abstract class Model
     protected function columnCache() {
         $file = str_replace('App\\Model\\','',get_class($this));
         $file = str_replace('\\','_',$file);
-        $file = __DIR__.DS.'cache'.DS.$file;
+        $file = 'Application'.DS.'Model'.DS.'cache'.DS.$file;
 
         $modtime = @filemtime($file);
         $cacheTime = 900;
@@ -181,6 +181,7 @@ abstract class Model
             $columns = [];
             foreach($results as $column) {
                 $columns[] = $column['Field'];
+                Log::debug($column['Field']);
             }
             file_put_contents($file,json_encode($columns));
         }
@@ -246,6 +247,7 @@ abstract class Model
         $primaryKey = $db->escape($this->getId());
 
         $query = "UPDATE {$this->_table} SET {$update} WHERE {$this->_primaryKey} = '{$primaryKey}'";
+        Log::debug($query);
         App::db()->query($query);
 
         return $this;

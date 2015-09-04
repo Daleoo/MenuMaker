@@ -14,6 +14,12 @@ let MenuActions = React.createClass({
     generateTakeOut: function() {
         window.location.href = 'http://localhost/MenuMaker/backend/menu/generate/takeout/'+this.props.menu;
     },
+    updateMagento: function() {
+        $.ajax({
+            method: 'GET',
+            url: 'http://localhost/MenuMaker/backend/menu/push/' + this.props.menu
+        });
+    },
     showActions: function() {
         this.setState({
             clicked: this.state.clicked ? false : true

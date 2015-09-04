@@ -8,7 +8,6 @@ var Item = React.createClass({
         };
     },
     showEdit: function() {
-        console.log("clicked");
         this.setState({
             edit: this.state.edit ? false : true,
         });

@@ -12,9 +12,8 @@ class App extends Application {
         parent::__construct();
         App::init();
         $this['debug'] = true;
-
         $this->register(new \Silex\Provider\TwigServiceProvider(), array(
-            'twig.path' => __DIR__.DS.'..'.DS.'templates',
+            'twig.path' => __DIR__.DS.'..'.DS.'templates'.DS,
             'twig.class_path' => __DIR__.DS.'..'.DS.'vendor'.DS.'twig'.DS.'lib',
         ));
     }
@@ -40,7 +39,6 @@ class App extends Application {
         //List menu items
         $this->get('item/list', function() {
             $collection = App::model('item')->getCollection()->toJson();
-            Logger::debug("Test Log");
             return $collection;
         });
 
@@ -105,13 +103,25 @@ class App extends Application {
 
             return true;
         });
+
+        $this->get('menu/push/{id}',function($id) {
+            $menu = App::model('menu')->load($id);
+            if($menu->getId()) {
+                $list = App::model('item')->getCollection()->filter('menu',$id)->toJson();
+                $req = ['menu' => $menu->get('title'), 'items' => $list];
+                $req = json_encode($req);
+                return $req;
+            }
+
+            return 0;
+        });
     }
 
     /**
      * Load model using psr-4 path
      */
     public static function model($path) {
-        $namespace = "\\App\\Model\\".$path;
+        $namespace = "\\App\\Model\\".ucfirst($path);
         return new $namespace();
     }
 
@@ -119,7 +129,7 @@ class App extends Application {
      * Load controller using psr-4 path
      */
     public static function controller($path) {
-        $namespace = "\\App\\Controller\\".$path;
+        $namespace = "\\App\\Controller\\".ucfirst($path);
         return new $namespace();
     }
 

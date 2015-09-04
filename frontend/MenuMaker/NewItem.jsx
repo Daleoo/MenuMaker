@@ -19,7 +19,6 @@ var NewItem = React.createClass({
         }
     },
     onSave: function() {
-        console.log("saved");
         if(this.props.parent) {
             this.props.parent.loadMenu();
         }

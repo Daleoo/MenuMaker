@@ -73,7 +73,8 @@ var ItemForm = React.createClass({
         let takeOutPrice = parseFloat(this.props.data.takeoutprice ? this.props.data.takeoutprice : 0).toFixed(2);
         let eatInPrice = parseFloat(this.props.data.eatinprice).toFixed(2);
         let id = this.props.data.item ? this.props.data.item : 0;
-
+        let parentItem = this.props.data.parent;
+        console.log(this.props.data.parent);
         return (<div className="itemform">
             <input type="hidden" name="item" value={id} />
             <label for="title">Title</label>
@@ -95,10 +96,14 @@ var ItemForm = React.createClass({
             <label for="takeoutprice">Take Out Price</label>
             <input type="text" name="takeoutprice" defaultValue={takeOutPrice} id="takeoutprice" />
             <label for="parent">Parent Item</label>
-            <select name="parent" value={this.props.data.parent} id="parent">
+            <select name="parent" defaultValue={this.props.data.parent} id="parent">
                 <option value="0">No Parent</option>
+
                     {this.state.items.map(function(item) {
-                        return <option value={item.item} key={item.item}>{item.title}</option>
+                        if(parentItem == item.item) {
+                            return (<option value={item.item} key={item.item} selected>{item.title}</option>);
+                        }
+                        return (<option value={item.item} key={item.item}>{item.title}</option>);
                     })}
             </select>
             <label for="menu">Menu</label>

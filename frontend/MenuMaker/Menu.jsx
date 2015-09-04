@@ -46,9 +46,6 @@ var Menu = React.createClass({
             });
         }
     },
-    generate: function() {
-        console.log("Generating");
-    },
     render: function() {
         var items = this.state.items;
         let addNew = this.state.clicked ? (<NewItem menu={this.props.data.menu} parent={this} />) : null;
